@@ -1,12 +1,13 @@
 import { Text, StyleSheet, View, Image, TextInput, Button, KeyboardAvoidingView, Platform } from "react-native";
 // import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useState } from 'react';
+import AddImage from "../components/AddImage";
 
 const user = {
     id: "u1",
     image:
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg",
-    name: "Vadim Savin",
+    name: "Deni Gabissov",
   };
 
 const CreatePostScreen = () => {
@@ -37,9 +38,15 @@ const CreatePostScreen = () => {
                 placeholder="What is on your mind?" 
                 multiline
                 style={styles.textInput} />
+            
+            <AddImage />
+
             <View style={styles.buttonContainer}>
                 <Button title="Post" onPress={onSubmit} />   
             </View>
+
+
+            
         </KeyboardAvoidingView>
     );
 }; 
