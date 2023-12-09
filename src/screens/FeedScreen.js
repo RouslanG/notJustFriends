@@ -7,7 +7,7 @@ const FeedScreen = () => {
         <FlatList 
         data ={posts}
         renderItem ={({item}) => <FeedPost post={item}/>}
-        showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={true}
         />
     )
 }
