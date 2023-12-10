@@ -2,6 +2,7 @@ import { Text, StyleSheet, View, Image, TextInput, Button, KeyboardAvoidingView,
 // import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useState } from 'react';
 import AddImage from "../components/AddImage";
+import { useNavigation } from "@react-navigation/native";
 
 const user = {
     id: "u1",
@@ -11,13 +12,16 @@ const user = {
   };
 
 const CreatePostScreen = () => {
-    const [description, setDescription] = useState(''); 
+    const [description, setDescription] = useState('');
+    const navigation = useNavigation(); 
     
     // const insets = useSafeAreaInsets();
 
     const onSubmit = () => {
         console.warn('Posting: ', description); 
         setDescription (''); 
+
+        navigation.goBack(); 
     };
 
     return (
