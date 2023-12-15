@@ -12,8 +12,8 @@ const Navigator = () => {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="Feed" component={FeedScreen} />
+                <Stack.Screen name="Profile" component={ProfileScreen} />   
                 <Stack.Screen name="Create post" component={CreatePostScreen} />
-                <Stack.Screen name="Profile" component={ProfileScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );

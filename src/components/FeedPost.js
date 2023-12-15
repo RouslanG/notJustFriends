@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 import {
   Entypo,
@@ -12,7 +13,14 @@ import LikeImage from '../../assets/images/like.png';
 
 const FeedPost = ( { post } ) => {
 
+  const navigation = useNavigation(); 
+
   const [isLiked, setIsLiked] = useState(false); 
+
+  const viewProfile = () => {
+    console.warn('View profile');
+    navigation.navigate("Profile"); 
+  }; 
 
   return (
 
@@ -23,9 +31,11 @@ const FeedPost = ( { post } ) => {
             source={{ uri: post.User.image }} 
             style={styles.profileImage} 
             />
+            <Pressable onPress={viewProfile} style={styles.name}>
+              <Text>{post.User.name}</Text>
+            </Pressable>
             <View>
-            <Text style={styles.name}>{post.User.name}</Text>
-            <Text style={styles.subtitle}>{post.createdAt}</Text>
+              <Text style={styles.subtitle}>{post.createdAt}</Text>
             </View>
             <Entypo 
               name="dots-three-horizontal" 
@@ -121,6 +131,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontWeight: '600',
+    marginRight: 5,
   },
   subtitle: {
     color: 'gray',
