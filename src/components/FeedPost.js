@@ -111,9 +111,9 @@ const FeedPost = ( { post } ) => {
 }
 
 const styles = StyleSheet.create({
-  post: {
+   post: {
     width: '100%',
-    marginVertical: 10,
+    marginVertical: 2,
     backgroundColor: "#fff",
   },
   // HEADER

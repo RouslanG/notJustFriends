@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: 10, 
         paddingTop: 30, 
-        backgroundColor: 'orange',
         borderWidth: 10,   
     }, 
 
@@ -89,7 +88,6 @@ const styles = StyleSheet.create({
     },
     textInput: {
         borderWidth: 5, 
-        backgroundColor: 'green', 
     }
 
 }); 

@@ -1,6 +1,9 @@
 import { FlatList, Text, StyleSheet, View, Image, Pressable } from "react-native";
 
+import { useState } from 'react';
+
 import { useNavigation } from "@react-navigation/native";
+
 
 import { MaterialIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
@@ -11,6 +14,9 @@ import users from '../../assets/data/user.json';
 import FeedPost from "../components/FeedPost";
 
 const ProfileScreen = () => {
+    const [graduation, setGradution] = useState(users.education);
+    const [joined, setJoined] = useState(users.joinDate);
+    const [location, setLocation] = useState(users.location);
 
     const navigation = useNavigation();
 
@@ -66,7 +72,7 @@ const ProfileScreen = () => {
                 <View style={styles.graduationIconContainer}>
                     <Entypo name="graduation-cap" size={16} color="gray" />
                     <View style={styles.graduationTextContainer}>
-                        <Text style={styles.graduationText}>Graduated {users.education}</Text>
+                        <TextInput style={styles.graduationText}>Graduated {users.education}</TextInput>
                     </View>
                 </View>
 
