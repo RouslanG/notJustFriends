@@ -24,7 +24,7 @@ const FeedPost = ( { post } ) => {
 
   return (
 
-    <View style={styles.post}>
+    <Pressable style={styles.post}>
         {/* Header */}
         <View style={styles.header}>
             <Image 
@@ -106,7 +106,7 @@ const FeedPost = ( { post } ) => {
 
           </View>
         </View>
-    </View>
+    </Pressable>
   );
 }
 
