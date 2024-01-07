@@ -12,29 +12,29 @@ import {
 import LikeImage from '../../assets/images/like.png'; 
 
 const FeedPost = ( { post } ) => {
-
+  // navigation object 
   const navigation = useNavigation(); 
-
+  // useState to keep track of liked
   const [isLiked, setIsLiked] = useState(false); 
-
+  
+  // arrow function to navigate to profile, including providing postUserId 
   const viewProfile = () => {
-    console.warn('View profile');
-    navigation.navigate("Profile"); 
+    navigation.navigate("Profile", {id: post?.postUserId }); 
   }; 
 
   return (
 
     <Pressable style={styles.post}>
         {/* Header */}
-        <View style={styles.header}>
+        <Pressable 
+          style={styles.header}
+          onPress={viewProfile}>
             <Image 
-            source={{ uri: post.User.image }} 
+            source={{ uri: post.User?.image }} 
             style={styles.profileImage} 
             />
-            <Pressable onPress={viewProfile} style={styles.name}>
-              <Text>{post.User.name}</Text>
-            </Pressable>
             <View>
+              <Text>{post.User?.name}</Text>
               <Text style={styles.subtitle}>{post.createdAt}</Text>
             </View>
             <Entypo 
@@ -43,7 +43,7 @@ const FeedPost = ( { post } ) => {
               color="gray" 
               style={styles.icon} 
             />    
-        </View>
+        </Pressable>
 
         {/* Body */}
         {post.description &&(<Text style={styles.description}>{post.description}</Text>
@@ -135,6 +135,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     color: 'gray',
+    marginLeft: 5, 
   },
   icon: {
     marginLeft: 'auto', 

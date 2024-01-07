@@ -5,7 +5,8 @@ import { Feather } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';  
 
 import { useNavigation } from "@react-navigation/native";
-
+import { Auth } from 'aws-amplify'; 
+ 
 const Buttons = ( ) => {
 
     const navigation = useNavigation();
@@ -13,6 +14,8 @@ const Buttons = ( ) => {
     const editProfile = () => {
         navigation.navigate('EditProfile');
     };
+
+    const signOut = () => {Auth.signOut()}; 
 
     return (
         <View style={styles.buttonContainer}>
@@ -28,9 +31,9 @@ const Buttons = ( ) => {
                 <Text style={styles.editProfileText}>Edit Profile</Text>    
             </Pressable>
             
-            <View style={styles.logOutButton}>
+            <Pressable style={styles.logOutButton} onPress={signOut}>
                 <Feather name="log-out" size={16} color="black" />
-            </View>
+            </Pressable>
         </View>
     );
 };

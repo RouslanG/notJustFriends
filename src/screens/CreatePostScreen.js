@@ -4,6 +4,9 @@ import { useState } from 'react';
 import AddImage from "../components/AddImage";
 import { useNavigation } from "@react-navigation/native";
 
+import { DataStore, Auth } from "aws-amplify";
+import { Post } from '../models'; 
+
 const user = {
     id: "u1",
     image:
@@ -13,12 +16,30 @@ const user = {
 
 const CreatePostScreen = () => {
     const [description, setDescription] = useState('');
+
     const navigation = useNavigation(); 
     
     // const insets = useSafeAreaInsets();
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
         console.warn('Posting: ', description); 
+
+        const userData = await Auth.currentAuthenticatedUser(); 
+        console.log(userData.attributes.sub)
+
+        const newPost = new Post({
+            description,
+            //image,
+            numberOfLikes: 0,
+            numberOfShares: 0, 
+            postUserId: userData.attributes.sub, 
+            _version: 1, 
+        });
+
+        console.log(newPost); 
+
+        await DataStore.save(newPost); 
+
         setDescription (''); 
 
         navigation.goBack(); 
